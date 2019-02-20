@@ -5,12 +5,12 @@ module.exports.get = async (req, res) => {
   // verify code
 
   try {
-  let resp = await Ticket.find({code: req.params.code})
+  let resp = await Ticket.find({code: req.params.code});
 
   if(resp.length == 1) {
-    res.status(200).send('Ticket is valid')
+    res.status(200).send('Ticket is valid');
   } else {
-    res.status(400).send('Ticket is not valid')
+    res.send('Ticket is not valid').status(406);
   }
 
 } catch(err) {
